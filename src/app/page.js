@@ -50,7 +50,7 @@ export default function Home(props) {
               <Link href="/post/study/framework/react">REACT</Link>
             </li>
             <li>
-              <Link href="/post/study/framework/nextjs">Next.js13</Link>
+              <Link href="/post/study/framework/next">Next.js13</Link>
             </li>
           </ol>
         </>
