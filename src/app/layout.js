@@ -9,18 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html>
-      <body>
-        <h2>카테고리</h2>
-        <ol>
-          <li>
-            <Link href="/?category=1">study</Link>
-          </li>
-          <li>
-            <Link href="/?category=2">portpolio</Link>
-          </li>
-        </ol>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

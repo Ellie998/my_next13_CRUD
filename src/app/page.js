@@ -4,6 +4,16 @@ export default function Home(props) {
   const params = props.searchParams;
   return (
     <>
+      <h2>카테고리</h2>
+      <ol>
+        <li>
+          <Link href="/?category=1">study</Link>
+        </li>
+        <li>
+          <Link href="/?category=2">portpolio</Link>
+        </li>
+      </ol>
+
       <>
         {params.category === "1" && (
           <ul>
@@ -21,13 +31,13 @@ export default function Home(props) {
           <h2>글 목록</h2>
           <ol>
             <li>
-              <Link href="/post/language/html">HTML</Link>
+              <Link href="/post/study/language/html">HTML</Link>
             </li>
             <li>
-              <Link href="/post/language/css">CSS</Link>
+              <Link href="/post/study/language/css">CSS</Link>
             </li>
             <li>
-              <Link href="/post/language/js">JS</Link>
+              <Link href="/post/study/language/js">JS</Link>
             </li>
           </ol>
         </>
@@ -37,10 +47,10 @@ export default function Home(props) {
           <h2>글 목록</h2>
           <ol>
             <li>
-              <Link href="/post/framework/react">REACT</Link>
+              <Link href="/post/study/framework/react">REACT</Link>
             </li>
             <li>
-              <Link href="/post/framework/nextjs">Next.js13</Link>
+              <Link href="/post/study/framework/nextjs">Next.js13</Link>
             </li>
           </ol>
         </>
