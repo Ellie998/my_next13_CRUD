@@ -1,7 +1,10 @@
 import Link from "next/link";
 
-export default function Home(props) {
+export default async function Home(props) {
   const params = props.searchParams;
+  const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/posts.json`);
+  const result = await response.json();
+  console.log(result);
   return (
     <>
       <h2>카테고리</h2>
