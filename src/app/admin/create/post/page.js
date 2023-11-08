@@ -11,9 +11,10 @@ export default function CreatePost(props) {
   const dbUrl =
     params.category === "portpolio"
       ? `portpolio.json`
-      : params.sub === "framework"
+      : params.subCategory === "2"
       ? `study/library&framework.json`
       : `study/language.json`;
+  console.log(dbUrl);
 
   return (
     <form
