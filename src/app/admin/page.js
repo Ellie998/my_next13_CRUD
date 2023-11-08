@@ -68,12 +68,12 @@ export default async function Home(props) {
         <>
           <h2>글 목록</h2>
           <ol>
-            {result.portpolio.map(
+            {Object.keys(result.portpolio).map(
               (content, i) =>
                 content !== null && (
                   <li key={i}>
-                    <Link href={`/admin/post/portpolio/${content?.id}`}>
-                      {content?.title}
+                    <Link href={`/admin/post/portpolio/${content}`}>
+                      {content}
                     </Link>
                   </li>
                 )
