@@ -2,7 +2,9 @@ import Link from "next/link";
 
 export default async function Home(props) {
   const params = props.searchParams;
-  const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/post.json`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/post.json`, {
+    cache: "no-cache",
+  });
   const result = await response.json();
   const keys = Object.keys(result);
 

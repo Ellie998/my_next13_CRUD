@@ -2,7 +2,8 @@ import ControlPost from "@/app/admin/ControlPost";
 
 export default async function Portpolio(props) {
   const response = await fetch(
-    `https://myblog-3ce64-default-rtdb.firebaseio.com/post/portpolio/${props.params.id}.json`
+    `https://myblog-3ce64-default-rtdb.firebaseio.com/post/portpolio/${props.params.id}.json`,
+    { cache: "no-cache" }
   );
   const result = await response.json();
 

@@ -2,7 +2,8 @@ import ControlPost from "@/app/admin/ControlPost";
 
 export default async function Language(props) {
   const response = await fetch(
-    `https://myblog-3ce64-default-rtdb.firebaseio.com/post/study/language/${props.params.language}.json`
+    `https://myblog-3ce64-default-rtdb.firebaseio.com/post/study/language/${props.params.language}.json`,
+    { cache: "no-cache" }
   );
   const result = await response.json();
   return (
