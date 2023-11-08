@@ -1,9 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useEffect } from "react";
 
 export default function Update(props) {
+  const route = useRouter();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -52,6 +54,10 @@ export default function Update(props) {
               `${process.env.NEXT_PUBLIC_URL_API}/post/${props.params.slug[0]}/${props.params.slug[1]}.json`,
               option
             ).then((res) => console.log(res));
+            route.push(
+              `/admin/post/${props.params.slug[0]}/${props.params.slug[1]}`
+            );
+            route.refresh();
           }}>
           수정하기
         </button>
