@@ -2,11 +2,16 @@
 
 import Link from "next/link";
 
-export default function ControlCategory({ url }) {
+export default function ControlCategory({ category, subCategory }) {
   return (
     <ul>
       <li>
-        <Link href={`/admin/create/post/${url}`}>새로운 글 생성하기</Link>
+        <Link
+          href={`/admin/create/post?category=${category}${
+            subCategory !== undefined ? `&subCategory=${subCategory}` : ""
+          }`}>
+          새로운 글 생성하기
+        </Link>
       </li>
       <li>
         <Link href={``}>수정하기</Link>
@@ -18,12 +23,6 @@ export default function ControlCategory({ url }) {
             const option = {
               method: "DELETE",
             };
-            console.log(
-              `${process.env.NEXT_PUBLIC_URL_API}/post/${url.replace(
-                "framework",
-                "library&framework"
-              )}.json`
-            );
             fetch(
               `${process.env.NEXT_PUBLIC_URL_API}/post/${url.replace(
                 "framework",
