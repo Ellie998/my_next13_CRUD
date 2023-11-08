@@ -6,8 +6,6 @@ export default async function Home(props) {
   const result = await response.json();
   const keys = Object.keys(result);
 
-  // console.log(result.portpolio.map((content, i) => content));
-
   return (
     <>
       <h2>카테고리</h2>
