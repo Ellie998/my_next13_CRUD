@@ -12,7 +12,7 @@ export default async function Home(props) {
       <ol>
         {keys.map((category, i) => (
           <li key={i}>
-            <Link href={`/?category=${category}`}>{category}</Link>
+            <Link href={`/admin/?category=${category}`}>{category}</Link>
           </li>
         ))}
       </ol>
@@ -22,7 +22,7 @@ export default async function Home(props) {
           <ul>
             {Object.keys(result.study).map((subCategory, i) => (
               <li key={i}>
-                <Link href={`/?category=study&sub=${i + 1}`}>
+                <Link href={`/admin/?category=study&sub=${i + 1}`}>
                   {subCategory}
                 </Link>
               </li>
@@ -36,7 +36,9 @@ export default async function Home(props) {
           <ol>
             {Object.keys(result.study.language).map((content, i) => (
               <li key={i}>
-                <Link href={`/post/study/language/${content}`}>{content}</Link>
+                <Link href={`/admin/post/study/language/${content}`}>
+                  {content}
+                </Link>
               </li>
             ))}
           </ol>
@@ -49,7 +51,7 @@ export default async function Home(props) {
             {Object.keys(result.study["library&framework"]).map(
               (content, i) => (
                 <li key={i}>
-                  <Link href={`/post/study/framework/${content}`}>
+                  <Link href={`/admin/post/study/framework/${content}`}>
                     {content}
                   </Link>
                 </li>
@@ -66,7 +68,7 @@ export default async function Home(props) {
               (content, i) =>
                 content !== null && (
                   <li key={i}>
-                    <Link href={`/post/portpolio/${content?.id}`}>
+                    <Link href={`/admin/post/portpolio/${content?.id}`}>
                       {content?.title}
                     </Link>
                   </li>

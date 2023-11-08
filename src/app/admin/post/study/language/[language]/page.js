@@ -1,6 +1,6 @@
-export default async function Framework(props) {
+export default async function Language(props) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_URL_API}/post/study/library&framework/${props.params.framework}.json`
+    `https://myblog-3ce64-default-rtdb.firebaseio.com/post/study/language/${props.params.language}.json`
   );
   const result = await response.json();
   return (
