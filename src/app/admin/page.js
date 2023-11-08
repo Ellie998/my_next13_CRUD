@@ -83,7 +83,10 @@ export default async function Home(props) {
           </ol>
         </>
       )}
-      <ControlCategory url={``} />
+      {(params.category === "portpolio" ||
+        (params.category === "study" && params.sub !== undefined)) && (
+        <ControlCategory url={``} />
+      )}
     </>
   );
 }
