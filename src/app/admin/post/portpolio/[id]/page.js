@@ -1,8 +1,9 @@
-import Link from "next/link";
+import ControlPost from "@/app/admin/ControlPost";
 
 export default async function Portpolio(props) {
   const response = await fetch(
-    `https://myblog-3ce64-default-rtdb.firebaseio.com/post/portpolio/${props.params.id}.json`
+    `https://myblog-3ce64-default-rtdb.firebaseio.com/post/portpolio/${props.params.id}.json`,
+    { cache: "no-cache" }
   );
   const result = await response.json();
 
@@ -13,13 +14,7 @@ export default async function Portpolio(props) {
       <a href={result.url} target="_blank">
         {result.url}
       </a>
-      <div>
-        <button>
-          <Link href={`/admin/update/portpolio/${props.params.id}`}>
-            수정하기
-          </Link>
-        </button>
-      </div>
+      <ControlPost url={`portpolio/${props.params.id}`} />
     </>
   );
 }
