@@ -1,4 +1,4 @@
-import Link from "next/link";
+import ControlPost from "@/app/admin/ControlPost";
 
 export default async function Framework(props) {
   const response = await fetch(
@@ -9,14 +9,7 @@ export default async function Framework(props) {
     <>
       <h1>{result.title}</h1>
       <div>{result.description}</div>
-      <div>
-        <button>
-          <Link
-            href={`/admin/update/study/framework/${props.params.framework}`}>
-            수정하기
-          </Link>
-        </button>
-      </div>
+      <ControlPost url={`study/framework/${props.params.framework}`} />
     </>
   );
 }

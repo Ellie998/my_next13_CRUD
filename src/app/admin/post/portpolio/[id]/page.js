@@ -1,4 +1,4 @@
-import Link from "next/link";
+import ControlPost from "@/app/admin/ControlPost";
 
 export default async function Portpolio(props) {
   const response = await fetch(
@@ -13,13 +13,7 @@ export default async function Portpolio(props) {
       <a href={result.url} target="_blank">
         {result.url}
       </a>
-      <div>
-        <button>
-          <Link href={`/admin/update/portpolio/${props.params.id}`}>
-            수정하기
-          </Link>
-        </button>
-      </div>
+      <ControlPost url={`portpolio/${props.params.id}`} />
     </>
   );
 }
