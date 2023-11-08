@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ControlCategory from "./ControlCategory";
 
 export default async function Home(props) {
   const params = props.searchParams;
@@ -82,6 +83,7 @@ export default async function Home(props) {
           </ol>
         </>
       )}
+      <ControlCategory url={``} />
     </>
   );
 }
