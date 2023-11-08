@@ -7,6 +7,13 @@ export default async function Language(props) {
     <>
       <h1>{result.title}</h1>
       <div>{result.description}</div>
+      <div>
+        <button>
+          <Link href={`/admin/update/study/language/${props.params.language}`}>
+            수정하기
+          </Link>
+        </button>
+      </div>
     </>
   );
 }

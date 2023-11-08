@@ -7,6 +7,14 @@ export default async function Framework(props) {
     <>
       <h1>{result.title}</h1>
       <div>{result.description}</div>
+      <div>
+        <button>
+          <Link
+            href={`/admin/update/study/framework/${props.params.framework}`}>
+            수정하기
+          </Link>
+        </button>
+      </div>
     </>
   );
 }
