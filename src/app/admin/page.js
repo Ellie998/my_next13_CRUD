@@ -8,6 +8,9 @@ export default async function Home(props) {
 
   return (
     <>
+      <header>
+        <Link href={`/`}>Back To Home</Link>
+      </header>
       <h2>카테고리</h2>
       <ol>
         {keys.map((category, i) => (
