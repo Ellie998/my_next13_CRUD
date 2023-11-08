@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default async function Framework(props) {
   const response = await fetch(
     `https://myblog-3ce64-default-rtdb.firebaseio.com/post/study/library&framework/${props.params.framework}.json`

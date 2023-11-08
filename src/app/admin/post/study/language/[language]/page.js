@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default async function Language(props) {
   const response = await fetch(
     `https://myblog-3ce64-default-rtdb.firebaseio.com/post/study/language/${props.params.language}.json`

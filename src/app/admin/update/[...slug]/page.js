@@ -8,18 +8,27 @@ export default function Update(props) {
   const route = useRouter();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const slug = props.params.slug;
+
+  const dataUrl =
+    slug.length === 2
+      ? `${slug[0]}/${slug[1]}`
+      : slug[1] === "framework"
+      ? `${slug[0]}/library&framework/${slug[2]}`
+      : `${slug[0]}/${slug[1]}/${slug[2]}`;
+  const pageUrl =
+    slug.length === 2
+      ? `${slug[0]}/${slug[1]}`
+      : `${slug[0]}/${slug[1]}/${slug[2]}`;
 
   useEffect(() => {
-    fetch(
-      `${process.env.NEXT_PUBLIC_URL_API}/post/${props.params.slug[0]}/${props.params.slug[1]}.json`
-    )
+    fetch(`${process.env.NEXT_PUBLIC_URL_API}/post/${dataUrl}.json`)
       .then((res) => res.json())
       .then((data) => {
         setTitle(data.title);
         setDescription(data.description);
       });
   }, []);
-  // console.log(props.params);
 
   return (
     <>
@@ -51,12 +60,10 @@ export default function Update(props) {
               body: JSON.stringify({ title: title, description: description }), // body data type must match "Content-Type" header
             };
             fetch(
-              `${process.env.NEXT_PUBLIC_URL_API}/post/${props.params.slug[0]}/${props.params.slug[1]}.json`,
+              `${process.env.NEXT_PUBLIC_URL_API}/post/${dataUrl}.json`,
               option
             ).then((res) => console.log(res));
-            route.push(
-              `/admin/post/${props.params.slug[0]}/${props.params.slug[1]}`
-            );
+            route.push(`/admin/post/${pageUrl}`);
             route.refresh();
           }}>
           수정하기
