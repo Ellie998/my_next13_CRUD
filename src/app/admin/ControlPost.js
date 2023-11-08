@@ -15,17 +15,8 @@ export default function ControlPost({ url }) {
             const option = {
               method: "DELETE",
             };
-            console.log(
-              `${process.env.NEXT_PUBLIC_URL_API}/post/${url.replace(
-                "framework",
-                "library&framework"
-              )}.json`
-            );
             fetch(
-              `${process.env.NEXT_PUBLIC_URL_API}/post/${url.replace(
-                "framework",
-                "library&framework"
-              )}.json`,
+              `${process.env.NEXT_PUBLIC_URL_API}/post/${url}.json`,
               option
             ).then((res) => res.json());
           }}>

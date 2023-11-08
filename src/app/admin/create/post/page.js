@@ -11,10 +11,7 @@ export default function CreatePost(props) {
   const dbUrl =
     params.category === "portpolio"
       ? `portpolio.json`
-      : params.subCategory === "2"
-      ? `study/library&framework.json`
-      : `study/language.json`;
-  console.log(dbUrl);
+      : `study/${params.subCategory}.json`;
 
   return (
     <form
@@ -37,7 +34,10 @@ export default function CreatePost(props) {
         route.refresh();
       }}>
       <ul>
-        <li>카테고리</li>
+        <li>카테고리 : {params.category}</li>
+        {params.subCategory !== undefined && (
+          <li>서브 카테고리 : {params.subCategory}</li>
+        )}
         <li>
           <input
             type="text"

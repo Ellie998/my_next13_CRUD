@@ -28,7 +28,7 @@ export default async function Home(props) {
           <ul>
             {Object.keys(result.study).map((subCategory, i) => (
               <li key={i}>
-                <Link href={`/admin/?category=study&sub=${i + 1}`}>
+                <Link href={`/admin/?category=study&sub=${subCategory}`}>
                   {subCategory}
                 </Link>
               </li>
@@ -36,7 +36,7 @@ export default async function Home(props) {
           </ul>
         )}
       </>
-      {params.category === "study" && params.sub === "1" && (
+      {params.category === "study" && params.sub === "language" && (
         <>
           <h2>글 목록</h2>
           <ol>
@@ -50,19 +50,17 @@ export default async function Home(props) {
           </ol>
         </>
       )}
-      {params.category === "study" && params.sub === "2" && (
+      {params.category === "study" && params.sub === "framework" && (
         <>
           <h2>글 목록</h2>
           <ol>
-            {Object.keys(result.study["library&framework"]).map(
-              (content, i) => (
-                <li key={i}>
-                  <Link href={`/admin/post/study/framework/${content}`}>
-                    {content}
-                  </Link>
-                </li>
-              )
-            )}
+            {Object.keys(result.study["framework"]).map((content, i) => (
+              <li key={i}>
+                <Link href={`/admin/post/study/framework/${content}`}>
+                  {content}
+                </Link>
+              </li>
+            ))}
           </ol>
         </>
       )}

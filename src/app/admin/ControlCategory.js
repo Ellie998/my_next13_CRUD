@@ -24,10 +24,7 @@ export default function ControlCategory({ category, subCategory }) {
               method: "DELETE",
             };
             fetch(
-              `${process.env.NEXT_PUBLIC_URL_API}/post/${url.replace(
-                "framework",
-                "library&framework"
-              )}.json`,
+              `${process.env.NEXT_PUBLIC_URL_API}/post/${url}.json`,
               option
             ).then((res) => res.json());
           }}>
