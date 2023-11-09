@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function ControlPost({ url }) {
+  const route = useRouter();
   return (
     <ul>
       <li>
@@ -18,7 +20,13 @@ export default function ControlPost({ url }) {
             fetch(
               `${process.env.NEXT_PUBLIC_URL_API}/post/${url}.json`,
               option
-            ).then((res) => res.json());
+            ).then((res) => {
+              console.log(res.json());
+            });
+            route.push(
+              `/admin?category=${url.split("/")[0]}&sub=${url.split("/")[1]}`
+            );
+            route.refresh();
           }}>
           삭제하기
         </button>

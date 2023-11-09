@@ -54,7 +54,7 @@ export default function Update(props) {
               body: JSON.stringify({ title: title, description: description }), // body data type must match "Content-Type" header
             };
             fetch(
-              `${process.env.NEXT_PUBLIC_URL_API}/post/${dataUrl}.json`,
+              `${process.env.NEXT_PUBLIC_URL_API}/post/${url}.json`,
               option
             ).then((res) => console.log(res));
             route.push(`/admin/post/${url}`);
