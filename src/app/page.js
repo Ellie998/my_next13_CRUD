@@ -7,6 +7,7 @@ export default async function Home(props) {
   });
   const result = await response.json();
   const keys = Object.keys(result);
+  const studyKeys = params.sub ? Object.keys(result.study[params.sub]) : null;
 
   return (
     <>
@@ -39,10 +40,10 @@ export default async function Home(props) {
         <>
           <h2>글 목록</h2>
           <ol>
-            {Object.keys(result.study[params.sub]).map((content, i) => (
+            {studyKeys.map((studyKey, i) => (
               <li key={i}>
-                <Link href={`/post/study/${params.sub}/${content}`}>
-                  {content}
+                <Link href={`/post/study/${params.sub}/${studyKey}`}>
+                  {result.study[params.sub][studyKey].title}
                 </Link>
               </li>
             ))}
@@ -58,7 +59,9 @@ export default async function Home(props) {
               (content, i) =>
                 content !== null && (
                   <li key={i}>
-                    <Link href={`/post/portpolio/${content}`}>{content}</Link>
+                    <Link href={`/post/portpolio/${content}`}>
+                      {result.portpolio[content].title}
+                    </Link>
                   </li>
                 )
             )}
