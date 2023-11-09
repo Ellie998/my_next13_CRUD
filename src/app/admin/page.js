@@ -36,13 +36,13 @@ export default async function Home(props) {
           </ul>
         )}
       </>
-      {params.category === "study" && params.sub === "language" && (
+      {params.category === "study" && params.sub !== undefined && (
         <>
           <h2>글 목록</h2>
           <ol>
-            {Object.keys(result.study.language).map((content, i) => (
+            {Object.keys(result.study[params.sub]).map((content, i) => (
               <li key={i}>
-                <Link href={`/admin/post/study/language/${content}`}>
+                <Link href={`/admin/post/study/${params.sub}/${content}`}>
                   {content}
                 </Link>
               </li>
@@ -50,20 +50,7 @@ export default async function Home(props) {
           </ol>
         </>
       )}
-      {params.category === "study" && params.sub === "framework" && (
-        <>
-          <h2>글 목록</h2>
-          <ol>
-            {Object.keys(result.study["framework"]).map((content, i) => (
-              <li key={i}>
-                <Link href={`/admin/post/study/framework/${content}`}>
-                  {content}
-                </Link>
-              </li>
-            ))}
-          </ol>
-        </>
-      )}
+
       {params.category === "portpolio" && (
         <>
           <h2>글 목록</h2>
