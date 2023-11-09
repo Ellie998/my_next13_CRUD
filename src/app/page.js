@@ -2,7 +2,9 @@ import Link from "next/link";
 
 export default async function Home(props) {
   const params = props.searchParams;
-  const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/post.json`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/post.json`, {
+    cache: "no-cache",
+  });
   const result = await response.json();
   const keys = Object.keys(result);
 
@@ -25,7 +27,7 @@ export default async function Home(props) {
           <ul>
             {Object.keys(result.study).map((subCategory, i) => (
               <li key={i}>
-                <Link href={`/?category=study&sub=${i + 1}`}>
+                <Link href={`/?category=study&sub=${subCategory}`}>
                   {subCategory}
                 </Link>
               </li>
@@ -33,45 +35,30 @@ export default async function Home(props) {
           </ul>
         )}
       </>
-      {params.category === "study" && params.sub === "1" && (
+      {params.category === "study" && params.sub !== undefined && (
         <>
           <h2>글 목록</h2>
           <ol>
-            {Object.keys(result.study.language).map((content, i) => (
+            {Object.keys(result.study[params.sub]).map((content, i) => (
               <li key={i}>
-                <Link href={`/post/study/language/${content}`}>{content}</Link>
+                <Link href={`/post/study/${params.sub}/${content}`}>
+                  {content}
+                </Link>
               </li>
             ))}
           </ol>
         </>
       )}
-      {params.category === "study" && params.sub === "2" && (
-        <>
-          <h2>글 목록</h2>
-          <ol>
-            {Object.keys(result.study["library&framework"]).map(
-              (content, i) => (
-                <li key={i}>
-                  <Link href={`/post/study/framework/${content}`}>
-                    {content}
-                  </Link>
-                </li>
-              )
-            )}
-          </ol>
-        </>
-      )}
+
       {params.category === "portpolio" && (
         <>
           <h2>글 목록</h2>
           <ol>
-            {result.portpolio.map(
+            {Object.keys(result.portpolio).map(
               (content, i) =>
                 content !== null && (
                   <li key={i}>
-                    <Link href={`/post/portpolio/${content?.id}`}>
-                      {content?.title}
-                    </Link>
+                    <Link href={`/post/portpolio/${content}`}>{content}</Link>
                   </li>
                 )
             )}
