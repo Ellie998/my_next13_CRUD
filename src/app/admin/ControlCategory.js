@@ -2,11 +2,19 @@
 
 import Link from "next/link";
 
-export default function ControlPost({ url }) {
+export default function ControlCategory({ category, subCategory }) {
   return (
     <ul>
       <li>
-        <Link href={`/admin/update/${url}`}>수정하기</Link>
+        <Link
+          href={`/admin/create/post?category=${category}${
+            subCategory !== undefined ? `&subCategory=${subCategory}` : ""
+          }`}>
+          새로운 글 생성하기
+        </Link>
+      </li>
+      <li>
+        <Link href={``}>수정하기</Link>
       </li>
       <li>
         <button

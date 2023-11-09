@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ControlCategory from "./ControlCategory";
 
 export default async function Home(props) {
   const params = props.searchParams;
@@ -27,7 +28,7 @@ export default async function Home(props) {
           <ul>
             {Object.keys(result.study).map((subCategory, i) => (
               <li key={i}>
-                <Link href={`/admin/?category=study&sub=${i + 1}`}>
+                <Link href={`/admin/?category=study&sub=${subCategory}`}>
                   {subCategory}
                 </Link>
               </li>
@@ -35,13 +36,13 @@ export default async function Home(props) {
           </ul>
         )}
       </>
-      {params.category === "study" && params.sub === "1" && (
+      {params.category === "study" && params.sub !== undefined && (
         <>
           <h2>글 목록</h2>
           <ol>
-            {Object.keys(result.study.language).map((content, i) => (
+            {Object.keys(result.study[params.sub]).map((content, i) => (
               <li key={i}>
-                <Link href={`/admin/post/study/language/${content}`}>
+                <Link href={`/admin/post/study/${params.sub}/${content}`}>
                   {content}
                 </Link>
               </li>
@@ -49,38 +50,27 @@ export default async function Home(props) {
           </ol>
         </>
       )}
-      {params.category === "study" && params.sub === "2" && (
-        <>
-          <h2>글 목록</h2>
-          <ol>
-            {Object.keys(result.study["library&framework"]).map(
-              (content, i) => (
-                <li key={i}>
-                  <Link href={`/admin/post/study/framework/${content}`}>
-                    {content}
-                  </Link>
-                </li>
-              )
-            )}
-          </ol>
-        </>
-      )}
+
       {params.category === "portpolio" && (
         <>
           <h2>글 목록</h2>
           <ol>
-            {result.portpolio.map(
+            {Object.keys(result.portpolio).map(
               (content, i) =>
                 content !== null && (
                   <li key={i}>
-                    <Link href={`/admin/post/portpolio/${content?.id}`}>
-                      {content?.title}
+                    <Link href={`/admin/post/portpolio/${content}`}>
+                      {content}
                     </Link>
                   </li>
                 )
             )}
           </ol>
         </>
+      )}
+      {(params.category === "portpolio" ||
+        (params.category === "study" && params.sub !== undefined)) && (
+        <ControlCategory category={params.category} subCategory={params.sub} />
       )}
     </>
   );

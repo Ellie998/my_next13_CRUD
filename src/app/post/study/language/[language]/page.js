@@ -1,6 +1,7 @@
 export default async function Language(props) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_URL_API}/post/study/language/${props.params.language}.json`
+    `${process.env.NEXT_PUBLIC_URL_API}/post/study/language/${props.params.language}.json`,
+    { cache: "no-cache" }
   );
   const result = await response.json();
   return (

@@ -10,19 +10,13 @@ export default function Update(props) {
   const [description, setDescription] = useState("");
   const slug = props.params.slug;
 
-  const dataUrl =
-    slug.length === 2
-      ? `${slug[0]}/${slug[1]}`
-      : slug[1] === "framework"
-      ? `${slug[0]}/library&framework/${slug[2]}`
-      : `${slug[0]}/${slug[1]}/${slug[2]}`;
-  const pageUrl =
+  const url =
     slug.length === 2
       ? `${slug[0]}/${slug[1]}`
       : `${slug[0]}/${slug[1]}/${slug[2]}`;
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_URL_API}/post/${dataUrl}.json`)
+    fetch(`${process.env.NEXT_PUBLIC_URL_API}/post/${url}.json`)
       .then((res) => res.json())
       .then((data) => {
         setTitle(data.title);
@@ -63,7 +57,7 @@ export default function Update(props) {
               `${process.env.NEXT_PUBLIC_URL_API}/post/${dataUrl}.json`,
               option
             ).then((res) => console.log(res));
-            route.push(`/admin/post/${pageUrl}`);
+            route.push(`/admin/post/${url}`);
             route.refresh();
           }}>
           수정하기
