@@ -1,0 +1,8 @@
+li {
+  list-style: none;
+}
+
+a:active {
+  font-weight: bold;
+  text-decoration: overline;
+}
