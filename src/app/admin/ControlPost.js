@@ -6,12 +6,15 @@ import { useRouter } from "next/navigation";
 export default function ControlPost({ url }) {
   const route = useRouter();
   return (
-    <ul>
-      <li>
-        <Link href={`/admin/update/${url}`}>수정하기</Link>
+    <ul className="field is-grouped">
+      <li className="control">
+        <div className="button is-link is-light">
+          <Link href={`/admin/update/${url}`}>수정하기</Link>
+        </div>
       </li>
-      <li>
+      <li className="control">
         <button
+          className="button is-link"
           onClick={(e) => {
             e.preventDefault();
             const option = {

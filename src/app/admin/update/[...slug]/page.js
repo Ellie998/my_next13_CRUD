@@ -26,42 +26,62 @@ export default function Update(props) {
 
   return (
     <>
-      <h1>Update</h1>
+      <h1 className="title">Update Post</h1>
 
       <form>
-        <p>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </p>
-        <p>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </p>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            const option = {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-              },
-              body: JSON.stringify({ title: title, description: description }), // body data type must match "Content-Type" header
-            };
-            fetch(
-              `${process.env.NEXT_PUBLIC_URL_API}/post/${url}.json`,
-              option
-            ).then((res) => console.log(res));
-            route.push(`/admin/post/${url}`);
-            route.refresh();
-          }}>
-          수정하기
-        </button>
+        <ul>
+          <li className="field">
+            <label htmlFor="title" className="label">
+              Title :
+            </label>
+            <input
+              id="title"
+              type="text"
+              className="input"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </li>
+          <li className="field">
+            <label htmlFor="description" className="label">
+              Description :{" "}
+            </label>
+            <textarea
+              className="textarea"
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </li>
+          <li>
+            <div className="control">
+              <button
+                className="button is-link is-light"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const option = {
+                    method: "PUT",
+                    headers: {
+                      "Content-Type": "application/json",
+                      // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: JSON.stringify({
+                      title: title,
+                      description: description,
+                    }), // body data type must match "Content-Type" header
+                  };
+                  fetch(
+                    `${process.env.NEXT_PUBLIC_URL_API}/post/${url}.json`,
+                    option
+                  ).then((res) => console.log(res));
+                  route.push(`/admin/post/${url}`);
+                  route.refresh();
+                }}>
+                수정하기
+              </button>
+            </div>
+          </li>
+        </ul>
       </form>
     </>
   );
