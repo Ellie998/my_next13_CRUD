@@ -15,7 +15,11 @@ export default async function Home(props) {
       <div className="tabs">
         <ul>
           {keys.map((category, i) => (
-            <li key={i}>
+            <li
+              key={i}
+              className={`${
+                params.category === category ? "has-text-weight-bold" : ""
+              }`}>
               <Link href={`/admin/blog/?category=${category}`}>{category}</Link>
             </li>
           ))}
@@ -27,7 +31,11 @@ export default async function Home(props) {
           <div className="tabs">
             <ul>
               {Object.keys(result.study).map((subCategory, i) => (
-                <li key={i}>
+                <li
+                  key={i}
+                  className={`${
+                    params.sub === subCategory ? "has-text-weight-bold" : ""
+                  }`}>
                   <Link href={`/admin/blog/?category=study&sub=${subCategory}`}>
                     {subCategory}
                   </Link>
