@@ -4,11 +4,11 @@ import Link from "next/link";
 
 export default function ControlCategory({ category, subCategory }) {
   return (
-    <ul className="field is-grouped buttons">
+    <ul className="section field is-grouped buttons">
       <li className="control">
         <div className="button is-link is-outlined">
           <Link
-            href={`/admin/create/post?category=${category}${
+            href={`/admin/blog/create/post?category=${category}${
               subCategory !== undefined ? `&subCategory=${subCategory}` : ""
             }`}>
             새로운 글 생성하기

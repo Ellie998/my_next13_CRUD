@@ -1,4 +1,5 @@
 import ControlCategory from "@/components/blog/ControlCategory";
+
 import Link from "next/link";
 
 export default async function Home(props) {
@@ -11,11 +12,14 @@ export default async function Home(props) {
 
   return (
     <>
-      <h2 className="subtitle">카테고리</h2>
       <div className="tabs">
         <ul>
           {keys.map((category, i) => (
-            <li key={i}>
+            <li
+              key={i}
+              className={`${
+                params.category === category ? "has-text-weight-bold" : ""
+              }`}>
               <Link href={`/admin/blog/?category=${category}`}>{category}</Link>
             </li>
           ))}
@@ -27,7 +31,11 @@ export default async function Home(props) {
           <div className="tabs">
             <ul>
               {Object.keys(result.study).map((subCategory, i) => (
-                <li key={i}>
+                <li
+                  key={i}
+                  className={`${
+                    params.sub === subCategory ? "has-text-weight-bold" : ""
+                  }`}>
                   <Link href={`/admin/blog/?category=study&sub=${subCategory}`}>
                     {subCategory}
                   </Link>
@@ -38,8 +46,8 @@ export default async function Home(props) {
         )}
       </>
       {params.category === "study" && params.sub !== undefined && (
-        <>
-          <h2>글 목록</h2>
+        <div className="section">
+          <h2 className="subtitle is-4">글 목록</h2>
           <div className="content">
             <ol type="1">
               {Object.keys(result.study[params.sub]).map((studyKey, i) => (
@@ -52,12 +60,12 @@ export default async function Home(props) {
               ))}
             </ol>
           </div>
-        </>
+        </div>
       )}
 
       {params.category === "portpolio" && (
-        <>
-          <h2>글 목록</h2>
+        <div className="section">
+          <h2 className="subtitle is-4">글 목록</h2>
           <div className="content">
             <ol>
               {Object.keys(result.portpolio).map(
@@ -72,7 +80,7 @@ export default async function Home(props) {
               )}
             </ol>
           </div>
-        </>
+        </div>
       )}
       {(params.category === "portpolio" ||
         (params.category === "study" && params.sub !== undefined)) && (
