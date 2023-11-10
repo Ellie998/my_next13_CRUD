@@ -11,7 +11,6 @@ export default async function Home(props) {
 
   return (
     <>
-      <h2 className="subtitle">카테고리</h2>
       <div className="tabs">
         <ul>
           {keys.map((category, i) => (
