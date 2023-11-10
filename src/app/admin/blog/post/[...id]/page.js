@@ -1,10 +1,11 @@
 import ControlPost from "@/components/blog/ControlPost";
 
 export default async function Posts(props) {
+  const url = `${props.params.id[0]}/${props.params.id[1]}${
+    props.params.id[2] === undefined ? "" : "/" + props.params.id[2]
+  }`;
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_URL_API}/post/${props.params.id[0]}/${
-      props.params.id[1]
-    }${props.params.id[2] === undefined ? "" : "/" + props.params.id[2]}.json`,
+    `${process.env.NEXT_PUBLIC_URL_API}/post/${url}.json`,
     { cache: "no-cache" }
   );
   const result = await response.json();
@@ -22,7 +23,7 @@ export default async function Posts(props) {
           </a>
         </div>
       ) : null}
-      <ControlPost url={`portpolio/${props.params.id}`} />
+      <ControlPost url={url} />
     </div>
   );
 }

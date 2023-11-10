@@ -1,3 +1,3 @@
-export default async function Home(props) {
+export default async function Admin(props) {
   return <></>;
 }

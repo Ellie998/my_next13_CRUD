@@ -74,7 +74,7 @@ export default function Update(props) {
                     `${process.env.NEXT_PUBLIC_URL_API}/post/${url}.json`,
                     option
                   ).then((res) => console.log(res));
-                  route.push(`/admin/post/${url}`);
+                  route.push(`/admin/blog/post/${url}`);
                   route.refresh();
                 }}>
                 수정하기
