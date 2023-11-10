@@ -9,7 +9,7 @@ export default function ControlPost({ url }) {
     <ul className="pt-6 field is-grouped">
       <li className="control">
         <div className="button is-link is-light">
-          <Link href={`/admin/update/${url}`}>수정하기</Link>
+          <Link href={`/admin/blog/update/${url}`}>수정하기</Link>
         </div>
       </li>
       <li className="control">
@@ -27,7 +27,9 @@ export default function ControlPost({ url }) {
               console.log(res.json());
             });
             route.push(
-              `/admin?category=${url.split("/")[0]}&sub=${url.split("/")[1]}`
+              `/admin/blog?category=${url.split("/")[0]}&sub=${
+                url.split("/")[1]
+              }`
             );
             route.refresh();
           }}>

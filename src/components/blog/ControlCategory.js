@@ -8,7 +8,7 @@ export default function ControlCategory({ category, subCategory }) {
       <li className="control">
         <div className="button is-link is-outlined">
           <Link
-            href={`/admin/create/post?category=${category}${
+            href={`/admin/blog/create/post?category=${category}${
               subCategory !== undefined ? `&subCategory=${subCategory}` : ""
             }`}>
             새로운 글 생성하기
