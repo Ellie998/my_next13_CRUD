@@ -1,4 +1,4 @@
-import ControlPost from "@/app/admin/ControlPost";
+import ControlPost from "@/components/blog/ControlPost";
 
 export default async function Framework(props) {
   const response = await fetch(
