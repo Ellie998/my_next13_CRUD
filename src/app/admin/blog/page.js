@@ -16,7 +16,7 @@ export default async function Home(props) {
         <ul>
           {keys.map((category, i) => (
             <li key={i}>
-              <Link href={`/admin/?category=${category}`}>{category}</Link>
+              <Link href={`/admin/blog/?category=${category}`}>{category}</Link>
             </li>
           ))}
         </ul>
@@ -28,7 +28,7 @@ export default async function Home(props) {
             <ul>
               {Object.keys(result.study).map((subCategory, i) => (
                 <li key={i}>
-                  <Link href={`/admin/?category=study&sub=${subCategory}`}>
+                  <Link href={`/admin/blog/?category=study&sub=${subCategory}`}>
                     {subCategory}
                   </Link>
                 </li>
@@ -44,7 +44,8 @@ export default async function Home(props) {
             <ol type="1">
               {Object.keys(result.study[params.sub]).map((studyKey, i) => (
                 <li key={i}>
-                  <Link href={`/admin/post/study/${params.sub}/${studyKey}`}>
+                  <Link
+                    href={`/admin/blog/post/study/${params.sub}/${studyKey}`}>
                     {result.study[params.sub][studyKey].title}
                   </Link>
                 </li>
@@ -63,7 +64,7 @@ export default async function Home(props) {
                 (content, i) =>
                   result.portpolio[content] !== null && (
                     <li key={i}>
-                      <Link href={`/admin/post/portpolio/${content}`}>
+                      <Link href={`/admin/blog/post/portpolio/${content}`}>
                         {result.portpolio[content]?.title}
                       </Link>
                     </li>
