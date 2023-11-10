@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 export default function ControlPost({ url }) {
   const route = useRouter();
   return (
-    <ul className="field is-grouped">
+    <ul className="pt-6 field is-grouped">
       <li className="control">
         <div className="button is-link is-light">
           <Link href={`/admin/update/${url}`}>수정하기</Link>

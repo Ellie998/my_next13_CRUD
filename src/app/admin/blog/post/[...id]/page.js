@@ -10,12 +10,18 @@ export default async function Posts(props) {
   const result = await response.json();
 
   return (
-    <div>
-      <h1>{result.title}</h1>
-      <div>{result.description}</div>
-      <a href={result.url} target="_blank">
-        {result.url}
-      </a>
+    <div className="section">
+      <h1 className="title">{result.title}</h1>
+      <div className="has-text-right">{result.date}</div>
+      <div className="pt-3">{result.description}</div>
+      {result.url ? (
+        <div>
+          url :
+          <a href={result.url} target="_blank">
+            {result.url}
+          </a>
+        </div>
+      ) : null}
       <ControlPost url={`portpolio/${props.params.id}`} />
     </div>
   );
