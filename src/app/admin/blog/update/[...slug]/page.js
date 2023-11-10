@@ -25,7 +25,7 @@ export default function Update(props) {
   }, []);
 
   return (
-    <>
+    <div className="container ">
       <h1 className="title">Update Post</h1>
 
       <form>
@@ -83,6 +83,6 @@ export default function Update(props) {
           </li>
         </ul>
       </form>
-    </>
+    </div>
   );
 }
