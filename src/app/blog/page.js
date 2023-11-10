@@ -10,58 +10,75 @@ export default async function Home(props) {
 
   return (
     <>
-      <h2>카테고리</h2>
-      <ol>
-        {keys.map((category, i) => (
-          <li key={i}>
-            <Link href={`/blog/?category=${category}`}>{category}</Link>
-          </li>
-        ))}
-      </ol>
+      <div className="tabs">
+        <ul>
+          {keys.map((category, i) => (
+            <li
+              key={i}
+              className={`${
+                params.category === category ? "has-text-weight-bold" : ""
+              }`}>
+              <Link href={`/blog/?category=${category}`}>{category}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <>
         {params.category === "study" && (
-          <ul>
-            {Object.keys(result.study).map((subCategory, i) => (
-              <li key={i}>
-                <Link href={`/blog/?category=study&sub=${subCategory}`}>
-                  {subCategory}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="tabs">
+            <ul>
+              {Object.keys(result.study).map((subCategory, i) => (
+                <li
+                  key={i}
+                  className={`${
+                    params.sub === subCategory ? "has-text-weight-bold" : ""
+                  }`}>
+                  <Link href={`/blog/?category=study&sub=${subCategory}`}>
+                    {subCategory}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </>
       {params.category === "study" && params.sub !== undefined && (
-        <>
-          <h2>글 목록</h2>
-          <ol>
-            {Object.keys(result.study[params.sub]).map((studyKey, i) => (
-              <li key={i}>
-                <Link href={`/blog/post/study/${params.sub}/${studyKey}`}>
-                  {result.study[params.sub][studyKey].title}
-                </Link>
-              </li>
-            ))}
-          </ol>
-        </>
+        <div className="section">
+          <h2 className="subtitle is-4">글 목록</h2>
+          <div className="content">
+            <ol type="1">
+              {Object.keys(result.study[params.sub]).map((studyKey, i) => (
+                <li key={i}>
+                  <Link href={`/blog/post/study/${params.sub}/${studyKey}`}>
+                    {result.study[params.sub][studyKey].title}
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
       )}
 
       {params.category === "portpolio" && (
         <>
-          <h2>글 목록</h2>
-          <ol>
-            {Object.keys(result.portpolio).map(
-              (content, i) =>
-                result.portpolio[content] !== null && (
-                  <li key={i}>
-                    <Link href={`/blog/post/portpolio/${content}`}>
-                      {result.portpolio[content]?.title}
-                    </Link>
-                  </li>
-                )
-            )}
-          </ol>
+          <div className="section">
+            <h2 className="subtitle is-4">글 목록</h2>
+            <div className="content">
+              <ol>
+                {Object.keys(result.portpolio).map(
+                  (content, i) =>
+                    result.portpolio[content] !== null && (
+                      <li key={i}>
+                        <Link href={`/blog/post/portpolio/${content}`}>
+                          {result.portpolio[content]?.title}
+                        </Link>
+                      </li>
+                    )
+                )}
+              </ol>
+            </div>
+          </div>
         </>
       )}
     </>

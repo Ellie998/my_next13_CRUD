@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function ControlCategory({ category, subCategory }) {
   return (
-    <ul className="field is-grouped buttons">
+    <ul className="section field is-grouped buttons">
       <li className="control">
         <div className="button is-link is-outlined">
           <Link

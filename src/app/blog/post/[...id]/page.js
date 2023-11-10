@@ -24,7 +24,6 @@ export default async function Posts(props) {
             </a>
           </div>
         ) : null}
-        <ControlPost url={url} />
       </div>
     </div>
   );

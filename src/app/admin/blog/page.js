@@ -46,8 +46,8 @@ export default async function Home(props) {
         )}
       </>
       {params.category === "study" && params.sub !== undefined && (
-        <>
-          <h2>글 목록</h2>
+        <div className="section">
+          <h2 className="subtitle is-4">글 목록</h2>
           <div className="content">
             <ol type="1">
               {Object.keys(result.study[params.sub]).map((studyKey, i) => (
@@ -60,12 +60,12 @@ export default async function Home(props) {
               ))}
             </ol>
           </div>
-        </>
+        </div>
       )}
 
       {params.category === "portpolio" && (
-        <>
-          <h2>글 목록</h2>
+        <div className="section">
+          <h2 className="subtitle is-4">글 목록</h2>
           <div className="content">
             <ol>
               {Object.keys(result.portpolio).map(
@@ -80,7 +80,7 @@ export default async function Home(props) {
               )}
             </ol>
           </div>
-        </>
+        </div>
       )}
       {(params.category === "portpolio" ||
         (params.category === "study" && params.sub !== undefined)) && (
